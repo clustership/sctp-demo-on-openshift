@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: sctp-client
+  name: sctp-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sctp-client
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: sctp-client
+    spec:
+      containers:
+      - env:
+        - name: SCTP_SERVER
+          value: "false"
+        - name: SCTP_PORT
+          value: "55677"
+        - name: SCTP_IP
+          value: sctp-server
+        image: quay.io/xymox/go-sctp:latest
+        imagePullPolicy: Always
+        name: sctp-sever
+        command: ["/bin/sh", "-c"]
+        args: ["sleep infinity"]
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File

@@ -1,0 +1,4 @@
+github.com/ishidawataru/sctp v0.0.0-20191218070446-00ab2ac2db07 h1:rw3IAne6CDuVFlZbPOkA7bhxlqawFh7RJJ+CejfMaxE=
+github.com/ishidawataru/sctp v0.0.0-20191218070446-00ab2ac2db07/go.mod h1:co9pwDoBCm1kGxawmb4sPq0cSIOOWNPT4KnHotMP1Zg=
+github.com/namsral/flag v1.7.4-pre h1:b2ScHhoCUkbsq0d2C15Mv+VU8bl8hAXV8arnWiOHNZs=
+github.com/namsral/flag v1.7.4-pre/go.mod h1:OXldTctbM6SWH1K899kPZcf65KxJiD7MsceFUpB5yDo=

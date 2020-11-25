@@ -1,0 +1,27 @@
+FROM registry.redhat.io/ubi8/go-toolset as builder
+
+RUN mkdir -p /opt/app-root/src
+WORKDIR /opt/app-root/src
+
+COPY go.* *.go .
+
+RUN go build -o sctp
+
+FROM registry.redhat.io/ubi8
+
+USER root
+RUN dnf -y install nmap-ncat \
+                   procps-ng \
+                   iputils \
+                   tcpdump \
+    && dnf clean all
+
+RUN mkdir -p /app
+WORKDIR /app
+
+COPY --from=builder /opt/app-root/src/sctp .
+USER 1001
+
+CMD [ "./sctp", "-server" ]
+
+
